@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+}
+
+.app{
+    background: rgb(31, 30, 30);
+    min-height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+}
+.card{
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-inline: 20px; 
+}
+
+.Input-part {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.Input-part input{
+    outline: none;
+    width: 50%;
+}
+.Input-part button {
+    width: 70px;
+    color: white;
+    background-color: tomato;
+    border: none;
+    border-radius: 3px;
+}
+.Input-part button:hover {
+    background-color: darkslategrey;
+}
+.List-part {
+    flex: 1;
+    border-left: 2px solid white;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-top: 20px;  */
+    overflow-y: scroll;
+}
+.List-part h1{
+    margin-bottom: 20px;
+    background: rgb(31, 30, 30);
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.to-do-card{
+    width: 70%;
+    min-height: 100px;
+    background-color: white;
+    border-radius: 5px;
+    border-left: 5px solid tomato;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 15px;
+    transition: all 1s;
+}
+.to-do-card:hover{
+    transition: all 1s;
+    -webkit-box-shadow: -1px 0px 28px 9px rgba(191,164,173,1);
+    -moz-box-shadow: -1px 0px 28px 9px rgba(191,164,173,1);
+    box-shadow: -1px 0px 28px 9px rgba(191,164,173,1);
+}
+.to-do-item{
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+/* border-radius: 5px; */
+background-color: grey;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: tomato;
+border-radius: 5px;
+/* box-shadow: inset 5px -5px 5px rgba(58, 114, 60, 1); */
+}
+
+.delete-button{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: grey;
+    margin-right: 10px;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.7s;
+    transform: scale(1)
+}
+
+.delete-button:hover{
+    background-color: tomato;
+    transition: all 0.7s;
+    transform: scale(1.05)
+}
