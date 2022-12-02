@@ -1,21 +1,25 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import "./App.css"
-import { MdDeleteOutline } from "react-icons/md";
+
+import Todo from "./components/Todo";
 
 
 function App() {
   const [state, setState] = useState(" ");
   const [todo, setTodo] = useState(["first to-do", "second to-do"])
-
+  // const [form, setForm] = useState({})
+  // const firstName = useRef("")
+  
   const handleClick = () => {
     setTodo((curr)=>([...curr, state]))
-    setState(" ")
+    setState("")
   }
-
-  const deleteItem =(val)=>{
-    const newArray = todo.filter((list)=> list !== val);
-    console.log(newArray)
-    setTodo(newArray);
+  const handleChange = (event) => {
+    setForm(prevForm =>(
+      {...prevForm,
+      firstName : firstName.current.value
+      }
+    ))
   }
 
 
@@ -24,24 +28,14 @@ function App() {
     <div className="app">
       <div className="card" style={{color: "white"}}>
         <div className="Input-part">
-          <input onChange={(e)=> setState(e.target.value)} type="text" placeholder="add to-do"/>
+          <input value={state} type="text" onChange={(e)=> setState(e.target.value)} placeholder="add to-do"/>
           <button onClick={handleClick}>add</button>
+
+          {/* <input ref={firstName} type="text" placeholder="first name" name="firstName"/>
+          <input onChange={handleChange} type="text" placeholder="last name" name="lastName" />
+          <button onClick={handleChange}>change name</button> */}
         </div>
-        <div className="List-part">
-          <h1>TO-DO LIST</h1>
-          {
-            todo?.map((item)=> (
-              <div className="to-do-card">
-                <div>
-                  <p className="to-do-item">{item}</p>
-                </div>
-                <div>
-                  <div className="delete-button" onClick={()=>{deleteItem(item)}}><MdDeleteOutline /></div>
-                </div>
-              </div>
-            ))
-          }
-        </div>
+        <Todo todo={todo} setTodo={setTodo}/>
       </div>
     </div>
   )

@@ -29,7 +29,9 @@
 .Input-part {
     flex: 1;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    
 }
 .Input-part input{
     outline: none;
