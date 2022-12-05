@@ -1,41 +1,34 @@
 import React, {useEffect, useState, useRef} from "react";
 import "./App.css"
-
 import Todo from "./components/Todo";
 
 
 function App() {
-  const [state, setState] = useState(" ");
-  const [todo, setTodo] = useState(["first to-do", "second to-do"])
-  // const [form, setForm] = useState({})
-  // const firstName = useRef("")
-  
+  const [todo, setTodo] = useState([{id:1, todo:"first todo", day: "today"}, {id:2, todo: "second todo", day: "today"}]);
+  const todoRef = useRef('');
+  const whenRef = useRef('')
+
   const handleClick = () => {
-    setTodo((curr)=>([...curr, state]))
-    setState("")
-  }
-  const handleChange = (event) => {
-    setForm(prevForm =>(
-      {...prevForm,
-      firstName : firstName.current.value
-      }
-    ))
+    setTodo((curr)=>([...curr, {
+      id: curr.length + 1,
+      todo: todoRef.current.value,
+      day: whenRef.current.value
+    }]))
+    whenRef.current.value = "";
+    todoRef.current.value = "";
   }
 
 
 
   return (
-    <div className="app">
-      <div className="card" style={{color: "white"}}>
+    <div className="app" style={{ color: "white"}}>
+      <div className="card">
         <div className="Input-part">
-          <input value={state} type="text" onChange={(e)=> setState(e.target.value)} placeholder="add to-do"/>
+          <input ref={todoRef} type="text"  placeholder="add to-do"/>
+          <input ref={whenRef} type="text" placeholder="add when"/>
           <button onClick={handleClick}>add</button>
-
-          {/* <input ref={firstName} type="text" placeholder="first name" name="firstName"/>
-          <input onChange={handleChange} type="text" placeholder="last name" name="lastName" />
-          <button onClick={handleChange}>change name</button> */}
         </div>
-        <Todo todo={todo} setTodo={setTodo}/>
+        <Todo todo={todo} setTodo={setTodo} />
       </div>
     </div>
   )
